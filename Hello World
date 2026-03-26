@@ -1,0 +1,12 @@
+Lab1
+Create Helle World
+
+New Project->
+Empty Views Activity
+Name:-        Lab1
+Language:-    Java
+minimum sdk:- Anything (Jelly bean, Android 4.1)
+Finish
+
+Output:-
+activity_main.xml
