@@ -1,0 +1,148 @@
+Program 7 – Create Menu in Android Application
+
+
+Step 1: Create New Project
+        Click New Project.
+        Select Empty Views Activity → Click Next.
+--> Enter:
+  Project Name: Lab7
+  Language: Java
+  Minimum SDK: API 16: Android 4.1 (Jelly Bean)
+  Click Finish.
+
+Step 2: Create Another Activity
+    Right-click on app
+    Select:
+    New → Activity → Empty Views Activity
+    Enter Activity Name: HomeScreen
+    Click Finish
+
+
+Step 3: Create Menu Resource File
+    Right-click on res
+    Select:
+    New → Android Resource File
+    Enter:
+    File Name: menus
+    Resource Type: Menu
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+menus.xml
+
+Path: res/menu/menus.xml
+
+
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/php"
+        android:title="PHP"/>
+
+    <item
+        android:id="@+id/java"
+        android:title="JAVA"/>
+
+    <item
+        android:id="@+id/csharp"
+        android:title="C#"/>
+
+</menu>
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Step 4: Update MainActivity.java
+
+Path: java/com/example/menuexample/MainActivity.java
+
+
+package com.example.lab7;
+
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menus, menu);
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        if (item.getItemId() == R.id.php) {
+            Toast.makeText(this, "PHP Page", Toast.LENGTH_SHORT).show();
+        }
+
+        else if (item.getItemId() == R.id.java) {
+            Toast.makeText(this, "JAVA Page", Toast.LENGTH_SHORT).show();
+        }
+
+        else if (item.getItemId() == R.id.csharp) {
+            Toast.makeText(this, "C# Page", Toast.LENGTH_SHORT).show();
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+}
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Step 5: Update AndroidManifest.xml
+
+Path: app/manifests/AndroidManifest.xml
+
+
+<?xml version="1.0" encoding="utf-8"?>
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.Light"
+        tools:targetApi="31">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+
+        </activity>
+
+    </application>
+
+</manifest>
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
