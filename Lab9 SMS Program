@@ -1,0 +1,167 @@
+    Step 1: Create New Project
+      Click New Project
+      Select Empty Views Activity
+      Click Next
+      Enter:
+      Project Name: Lab9
+      Language: Java
+      Minimum SDK: API 16
+      Click Finish
+
+---------------------------------------------------------------------------------------------------------------------------
+
+Step 2: Open activity_main.xml
+
+Go to: app → res → layout → activity_main.xml
+Delete existing code and paste:
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <EditText
+        android:id="@+id/editTextPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Phone Number"
+        android:inputType="phone" />
+
+    <EditText
+        android:id="@+id/editTextMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Message"
+        android:layout_marginTop="20dp" />
+
+    <Button
+        android:id="@+id/buttonSend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Send SMS"
+        android:layout_marginTop="20dp" />
+
+</LinearLayout>
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Step 3: Open MainActivity.java
+
+Go to: app → java → com.example.smsprogram → MainActivity.java
+Delete existing code and paste:
+
+package com.example.lab9;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.os.Bundle;
+import android.telephony.SmsManager;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import androidx.core.app.ActivityCompat;
+
+public class MainActivity extends AppCompatActivity {
+
+    EditText editTextPhone, editTextMessage;
+    Button buttonSend;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        editTextPhone = findViewById(R.id.editTextPhone);
+        editTextMessage = findViewById(R.id.editTextMessage);
+        buttonSend = findViewById(R.id.buttonSend);
+
+        ActivityCompat.requestPermissions(
+                this,
+                new String[]{Manifest.permission.SEND_SMS},
+                PackageManager.PERMISSION_GRANTED
+        );
+
+        buttonSend.setOnClickListener(v -> {
+
+            String phone =
+                    editTextPhone.getText().toString();
+
+            String message =
+                    editTextMessage.getText().toString();
+
+            try {
+
+                SmsManager smsManager =
+                        SmsManager.getDefault();
+
+                smsManager.sendTextMessage(
+                        phone,
+                        null,
+                        message,
+                        null,
+                        null
+                );
+
+                Toast.makeText(
+                        this,
+                        "SMS Sent Successfully",
+                        Toast.LENGTH_SHORT
+                ).show();
+
+            } catch (Exception e) {
+
+                Toast.makeText(
+                        this,
+                        "SMS Failed",
+                        Toast.LENGTH_SHORT
+                ).show();
+            }
+        });
+    }
+}
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Step 4: Add Permission in AndroidManifest.xml
+
+Go to: app → manifests → AndroidManifest.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission
+        android:name="android.permission.SEND_SMS"/>
+
+    <application
+        android:allowBackup="true"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Lab9">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category
+                    android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+
+        </activity>
+
+    </application>
+
+</manifest>
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
