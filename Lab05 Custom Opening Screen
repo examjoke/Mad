@@ -1,18 +1,20 @@
 
 1. New Project->
 Empty Views Activity
-Name:-        Lab6
+Name:-        Lab5
 Language:-    Java
 minimum sdk:- Anything (Jelly bean, Android 4.1)
 Finish
 
 2. In Project panel → Right-click app
 Click New → Activity → Empty Views Activity
-Enter name: mainscreen
+
+Enter name: mainscreen             <---------------
 Click Finish
 
-then in activity_mainscreen.xml paste it
+then,
 
+---> activity_mainscreen.xml
 
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -36,10 +38,10 @@ then in activity_mainscreen.xml paste it
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Then Copy a image from chrome 
+
 paste in drawable->paste
 
-
-next
+next,
 
 activity_main.xml
 
@@ -62,7 +64,7 @@ activity_main.xml
 
 -> MainActivity.java
 
-package com.example.Lab6;
+package com.example.Lab5;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
