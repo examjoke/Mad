@@ -2,7 +2,7 @@ Create an application to develop Login window using UI controls.
 1. Choose Empty Views Activity then click Next.
 2. Java
 3. API 16 (“Jelly Bean”, Android 4.1). 
-4. Create background resources(bg_outer.xml, bg_inner.xml)
+4. Create background resources(  bg_outer.xml ,  bg_inner.xml  ) ***
 app→res→drawable. Right click 
 drawable→New→ Drawable Resource File.
 
@@ -92,7 +92,7 @@ b) bg_inner.xml
 -> MainActivity.java
 
 
-package com.example.lab4;
+package com.example.lab3;
 
 import android.os.Bundle;
 import android.view.View;
