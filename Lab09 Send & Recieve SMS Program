@@ -8,13 +8,13 @@
       Minimum SDK: API 16
       Click Finish
 
----------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------
 
 Step 2: Open activity_main.xml
 
 Go to: app → res → layout → activity_main.xml
-Delete existing code and paste:
 
+--> activity_main.xml
 
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
@@ -54,6 +54,8 @@ Step 3: Open MainActivity.java
 
 Go to: app → java → com.example.smsprogram → MainActivity.java
 Delete existing code and paste:
+
+--> MainActivity.java
 
 package com.example.lab9;
 
@@ -133,6 +135,9 @@ public class MainActivity extends AppCompatActivity {
 Step 4: Add Permission in AndroidManifest.xml
 
 Go to: app → manifests → AndroidManifest.xml
+
+--> AndroidManifest.xml 
+
 
 <?xml version="1.0" encoding="utf-8"?>
 
