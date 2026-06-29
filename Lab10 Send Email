@@ -4,13 +4,13 @@ Step 1: Create New Project
     Select Empty Views Activity
     Click Next
     Enter:
-    Project Name: EmailApp
+    Project Name: Lab10
     Language: Java
     Minimum SDK: API 16
     Click Finish
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Step 2: Open activity_main.xml
+----> activity_main.xml
 
 Go to: app → res → layout → activity_main.xml
 Delete existing code and paste:
@@ -57,7 +57,7 @@ Delete existing code and paste:
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Step 3: Open MainActivity.java
+--> MainActivity.java
 
 Go to: app → java → com.example.lab10 → MainActivity.java
 Delete existing code and paste:
