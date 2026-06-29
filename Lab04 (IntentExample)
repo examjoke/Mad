@@ -1,20 +1,22 @@
 1. Create New Project
-Select Empty Views Activity
-Click Next
-Fill details:
-Name: IntentExample
-Language: Java
-Minimum SDK: API 16 (Jelly Bean)
-Click Finish
+
+  Select Empty Views Activity
+  Click Next
+
+  Name: IntentExample                    <---------
+  Language: Java
+  Minimum SDK: API 16 (Jelly Bean)
+  Click Finish
 
 
 2. Create New Activity (Explicit Intent)
 Go to:
 File → New → Activity → Empty Views Activity
-Activity Name: NewActivity
+
+Activity Name: NewActivity               <---------
 Click Finish
 
-3.Update activity_new.xml
+3.Update activity_new.xml                <----------
 
 res → layout → activity_new.xml
 
