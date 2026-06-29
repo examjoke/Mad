@@ -1,0 +1,59 @@
+Program 14 – Deploy Android Application
+
+Step 1: Open the Project
+Open Android Studio.
+Open the Android project you want to deploy.
+
+Step 2: Build the Application
+Click Build → Build APK(s).
+Wait until the build is completed.
+
+Step 3: Locate the APK
+The APK file is generated at:
+
+app/build/outputs/apk/debug/app-debug.apk
+
+or
+
+app/build/outputs/apk/release/app-release.apk
+
+
+Step 4: Enable USB Debugging
+On your Android phone:
+
+Open Settings.
+Go to About Phone.
+Tap Build Number 7 times to enable Developer Options.
+Open Developer Options.
+Enable USB Debugging.
+
+
+Step 5: Connect Device
+Connect the Android phone using a USB cable.
+Allow the USB debugging permission on the phone.
+
+
+Step 6: Run the Application
+
+In Android Studio:
+
+Click the Run (▶) button.
+Select your connected device.
+Click OK.
+
+The application will be installed and launched on the device.
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+Step 7: Generate Signed APK (Optional)
+
+For publishing the application:
+
+Click Build → Generate Signed Bundle / APK.
+Select APK.
+Create or choose a Keystore.
+Enter the password and key alias.
+Select Release.
+Click Finish.
+
+----------------------------------------------------------------------------------------------------------------------------------
