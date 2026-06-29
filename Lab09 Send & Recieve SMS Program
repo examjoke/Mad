@@ -3,7 +3,7 @@
       Select Empty Views Activity
       Click Next
       Enter:
-      Project Name: Lab10
+      Project Name: Lab9
       Language: Java
       Minimum SDK: API 16
       Click Finish
@@ -57,7 +57,7 @@ Delete existing code and paste:
 
 --> MainActivity.java
 
-package com.example.lab10;
+package com.example.lab9;
 
 import androidx.appcompat.app.AppCompatActivity;
 
