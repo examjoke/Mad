@@ -1,5 +1,5 @@
 --> Enter:
-  Project Name: Lab6
+  Project Name: Lab7
   Language: Java
   Minimum SDK: API 16: Android 4.1 (Jelly Bean)
   Click Finish.
@@ -53,7 +53,7 @@ Step 4: Update MainActivity.java
 Path: java/com/example/menuexample/MainActivity.java
 
 
-package com.example.lab6;
+package com.example.lab7;
 
 import android.os.Bundle;
 import android.view.Menu;
