@@ -1,0 +1,198 @@
+Step 1: Create New Project
+  Project Name: Lab9
+  Language: Java
+  Minimum SDK: API 21+
+
+--------------
+----------------------------------------------------------------------
+
+--> Step 2: activity_main.xml
+
+
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <EditText
+        android:id="@+id/editName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Name"/>
+
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save"/>
+
+    <Button
+        android:id="@+id/btnRead"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Read Data"/>
+
+    <TextView
+        android:id="@+id/txtResult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:paddingTop="20dp"/>
+
+</LinearLayout>
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Step 3: Create DatabaseHelper.java
+
+  Right Click Java Package
+  New → Java Class
+
+Name: DatabaseHelper And Open tht File
+
+---> DatabaseHelper.java
+
+
+package com.example.lab9;
+
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+
+public class DatabaseHelper extends SQLiteOpenHelper {
+
+    public static final String DB_NAME = "StudentDB";
+    public static final String TABLE_NAME = "Student";
+
+    public DatabaseHelper(Context context) {
+        super(context, DB_NAME, null, 1);
+    }
+
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+
+        db.execSQL("CREATE TABLE " + TABLE_NAME +
+                "(id INTEGER PRIMARY KEY AUTOINCREMENT,name TEXT)");
+
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        onCreate(db);
+
+    }
+
+    public boolean insertData(String name) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues cv = new ContentValues();
+
+        cv.put("name", name);
+
+        long result = db.insert(TABLE_NAME, null, cv);
+
+        return result != -1;
+    }
+
+    public Cursor getData() {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        return db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
+
+    }
+
+}
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+---> MainActivity.java
+
+package com.example.lab9;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.database.Cursor;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+
+    EditText editName;
+    Button btnSave, btnRead;
+    TextView txtResult;
+
+    DatabaseHelper db;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        editName = findViewById(R.id.editName);
+        btnSave = findViewById(R.id.btnSave);
+        btnRead = findViewById(R.id.btnRead);
+        txtResult = findViewById(R.id.txtResult);
+
+        db = new DatabaseHelper(this);
+
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String name = editName.getText().toString();
+
+                if(db.insertData(name)){
+                    Toast.makeText(MainActivity.this,
+                            "Data Saved",
+                            Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(MainActivity.this,
+                            "Failed",
+                            Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
+        btnRead.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Cursor cursor = db.getData();
+
+                StringBuilder sb = new StringBuilder();
+
+                while(cursor.moveToNext()){
+
+                    sb.append(cursor.getInt(0))
+                            .append(" - ")
+                            .append(cursor.getString(1))
+                            .append("\n");
+
+                }
+
+                txtResult.setText(sb.toString());
+
+            }
+        });
+
+    }
+}
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
