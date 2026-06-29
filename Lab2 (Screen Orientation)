@@ -1,11 +1,12 @@
 Lab2 Creating an application that displays message based on the screen orientation. 
 
 1 Click New Project, Lab2 (use this only becz of import lab2 ih mentioned
+
 2. Choose Empty Views Activity then click Next.
+
 3. Specify the Name of your project, Select the Language as Java, and Select the 
 Minimum SDK as API 16 (“Jelly Bean”, Android 4.1). Click Finish Button.
 
-4. Create two Button resources in activity_main.xml and update the following code.
 
 -> activity_main.xml
 
