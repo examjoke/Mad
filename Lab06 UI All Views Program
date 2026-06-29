@@ -1,11 +1,5 @@
-Program 7 – Create Menu in Android Application
-
-
-Step 1: Create New Project
-        Click New Project.
-        Select Empty Views Activity → Click Next.
 --> Enter:
-  Project Name: Lab7
+  Project Name: Lab6
   Language: Java
   Minimum SDK: API 16: Android 4.1 (Jelly Bean)
   Click Finish.
@@ -14,7 +8,9 @@ Step 2: Create Another Activity
     Right-click on app
     Select:
     New → Activity → Empty Views Activity
-    Enter Activity Name: HomeScreen
+
+    Enter Activity Name: HomeScreen       <---------------
+
     Click Finish
 
 
@@ -22,9 +18,9 @@ Step 3: Create Menu Resource File
     Right-click on res
     Select:
     New → Android Resource File
-    Enter:
-    File Name: menus
-    Resource Type: Menu
+
+    File Name: menus           <-------------
+    Resource Type: Menu        <----------------
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 menus.xml
@@ -57,7 +53,7 @@ Step 4: Update MainActivity.java
 Path: java/com/example/menuexample/MainActivity.java
 
 
-package com.example.lab7;
+package com.example.lab6;
 
 import android.os.Bundle;
 import android.view.Menu;
@@ -90,19 +86,23 @@ public class MainActivity extends AppCompatActivity {
 
         if (item.getItemId() == R.id.php) {
             Toast.makeText(this, "PHP Page", Toast.LENGTH_SHORT).show();
+            return true;
         }
 
         else if (item.getItemId() == R.id.java) {
             Toast.makeText(this, "JAVA Page", Toast.LENGTH_SHORT).show();
+            return true;
         }
 
         else if (item.getItemId() == R.id.csharp) {
             Toast.makeText(this, "C# Page", Toast.LENGTH_SHORT).show();
+            return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
 }
+
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -130,6 +130,10 @@ Path: app/manifests/AndroidManifest.xml
         tools:targetApi="31">
 
         <activity
+            android:name=".HomeScreen"
+            android:exported="false"/>
+
+        <activity
             android:name=".MainActivity"
             android:exported="true">
 
@@ -144,5 +148,25 @@ Path: app/manifests/AndroidManifest.xml
     </application>
 
 </manifest>
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--> activity_main.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Menu Example"
+        android:textSize="24sp"/>
+
+</LinearLayout>
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
