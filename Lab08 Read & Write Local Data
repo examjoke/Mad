@@ -1,11 +1,7 @@
-Program 8 – Read/Write Local Data in Android
-
-    Step 1: Create New Project
-        Open Android Studio
-        Click New Project
-        Select Empty Views Activity
-        Click Next
-        Enter:
+Step 1: Create New Project
+    Click New Project
+    Select Empty Views Activity
+    Click Next
         Name: Lab8
         Language: Java
         Minimum SDK: API 16
