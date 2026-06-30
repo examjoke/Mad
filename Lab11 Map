@@ -1,39 +1,28 @@
   Step 1: Open Android Studio
-    Launch Android Studio
+
     Click New Project
     Select Empty Views Activity
     Click Next
-    Project Name: Lab11
-    Package Name: com.example.maplocation
-    Language: Java
-    Minimum SDK: API 21 or above
-    Click Finish
+
+      Project Name: Lab11
+      Language: Java
+      Minimum SDK: API 21 or above
+      Click Finish
+
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   Step 2: Add Google Maps Dependency
-  
+
   Open:  Gradle Scripts → build.gradle (Module: app)
-  
   Add inside dependencies:
+
   
   implementation 'com.google.android.gms:play-services-maps:18.1.0'
   implementation 'com.google.android.gms:play-services-location:21.0.1'
+
   
   Then click Sync Now
 
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-Step 4: Get Google Maps API Key
-
-Go to: Google Cloud Console
-
-Do:
-Create new project
-Enable Maps SDK for Android
-Create API Key
-Copy the key
-
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Step 5: Edit AndroidManifest.xml
 
@@ -49,11 +38,11 @@ Replace with:
     <application
         android:allowBackup="true"
         android:label="@string/app_name"
-        android:theme="@style/Theme.MapLocation">
+        android:theme="@style/Theme.Lab11">
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="YOUR_API_KEY"/>  <----------Very Imp----------->
+            android:value="AQ.Ab8RN6KM0CounGdiojZ3ZBYoswg8WJ5ZbCdvs3Ol8epnDUtt1Q"/>
 
         <activity android:name=".MainActivity"
             android:exported="true">
@@ -67,13 +56,6 @@ Replace with:
     </application>
 </manifest>
 
----------------------------------------------------------------
-
-Replace:
-
-YOUR_API_KEY
-
-with your actual key.
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -81,6 +63,8 @@ Step 6: Design Layout
 
 Open: res → layout → activity_main.xml
 Replace code with:
+
+-->activity_main.xml
 
 <androidx.fragment.app.FragmentContainerView
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -93,8 +77,7 @@ Replace code with:
 
 Step 7:
 
-Open: MainActivity.java
-Replace with:
+--> MainActivity.java
 
 package com.example.lab11;
 
